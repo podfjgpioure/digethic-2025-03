@@ -20,19 +20,27 @@ Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integra
 
 1. run the setup script: `./setup.sh` or `sh setup.sh`
 2. activate the python environment: `source .venv/bin/activate`
-3. run example code: `python src/hello.py`
-4. install new dependency: `pip install sklearn`
-5. save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
 
 ### Windows Users
 
 1. run the setup script `.\setup.ps1`
 2. activate the python environment: `.\.venv\Scripts\Activate.ps1`
-3. run example code: `python src/hello.py`
-4. install new dependency: `pip install sklearn`
-5. save current installed dependencies back to requirements.txt: `pip freeze > requirements.txt`
 
 Troubleshooting:
 
 - If your system does not allow to run powershell scripts, try to set the execution policy: `Set-ExecutionPolicy RemoteSigned`, see https://www.stanleyulili.com/powershell/solution-to-running-scripts-is-disabled-on-this-system-error-on-powershell/
 - If you still cannot run the setup.ps1 script, open it and copy all the commands step by step in your terminal and execute each step
+
+### Executing the Projekt
+
+Note: This was executed on a Windows 10 Computer. Code has minimal focus on beeing platform independent!
+
+1. Download the Dataset and extract into the "data" folder. You should have: "data\household_power_consumption.txt"
+2. Execute: `python src\power-01-extract-final.py`
+3. You got: "data\household_power_consumption-valid.txt"
+4. Execute: `python src\power-02-gan-final.py`
+5. You got: "data\generated_data_gan.txt"
+6. Execute: `python src\power-02-vae-final.py`
+7. You got: "data\generated_data_vae.txt"
+8. Execute: `python src\power-03-plots-final.py`
+9. You got: 8 Plots of Original Days, 6 Plots for GAN-Generated Data and 6 Plots for VAE-Generated Data
